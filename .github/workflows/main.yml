@@ -25,6 +25,15 @@ jobs:
           flake8 ./code-appli-python/vote --count --select=E9,F63,F7,F82 --show-source --statistics
           flake8 ./code-appli-python/vote --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app
+          path: |
+            .
+            !./.git
+            !./.github
+            !./*.md
+
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build project # This would actually build your project, using zip for an example artifact
@@ -51,11 +60,3 @@ jobs:
           asset_name: my-artifact.zip
           asset_content_type: application/zip
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: app
-          path: |
-            .
-            !./.git
-            !./.github
-            !./*.md
