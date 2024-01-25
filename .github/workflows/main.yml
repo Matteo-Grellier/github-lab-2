@@ -25,6 +25,7 @@ jobs:
           flake8 ./code-appli-python/vote --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
   build:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -53,6 +54,7 @@ jobs:
             !./*.md
 
   publish:
+  needs: [lint, build]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
