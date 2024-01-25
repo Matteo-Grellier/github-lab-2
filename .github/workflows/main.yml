@@ -61,7 +61,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: my-artifact
-          path: /downloadedBuild
+          path: .
       - name: Display structure of downloaded files
         run: ls -R your/destination/dir
       - name: Checkout code
