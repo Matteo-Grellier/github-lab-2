@@ -63,7 +63,7 @@ jobs:
           name: my-artifact
           path: .
       - name: Display structure of downloaded files
-        run: ls -R your/destination/dir
+        run: ls -R .
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create Release
