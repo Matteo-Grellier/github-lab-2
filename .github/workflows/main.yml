@@ -54,7 +54,7 @@ jobs:
             !./*.md
 
   publish:
-  needs: [lint, build]
+    needs: [lint, build]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
