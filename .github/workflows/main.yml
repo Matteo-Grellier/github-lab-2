@@ -18,8 +18,6 @@ jobs:
       - run: |
           pip install -r code-appli-python/vote/requirements.txt
 
-      - run: python ./code-appli-python/vote/app.py
-
       - name: Create artifact
         run: |
           zip -r app.zip .
