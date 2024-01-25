@@ -58,13 +58,17 @@ jobs:
     needs: [lint, build]
     runs-on: ubuntu-latest
     steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+          path: ./build
 
+      - name: Pourquoi faire un deuxieme zip
+        run: zip -r app.zip ./build
 
       - name: Display structure of downloaded files
         run: ls -R .
-
-      - name: Checkout code
-        uses: actions/checkout@v2
 
       - name: Create Release
         id: create_release
@@ -77,14 +81,6 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-artifact
-          path: ./build
-
-      - name: Pourquoi faire un deuxieme zip
-        run: zip -r app.zip ./build
 
       - name: Upload Release Asset
         id: upload-release-asset
